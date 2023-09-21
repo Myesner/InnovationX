@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">login</string>
+
+    <!-- Headings -->
+    <string name="heading_one">Administra las cuentas de tu negocio</string>
+    <string name="heading_two">Lleva el control de tu inventario</string>
+    <string name="heading_three">Conoce y analiza las métricas de tu negocio</string>
+
+    <!-- Descriptions -->
+    <string name="desc_one">Gestiona y organiza tus ventas y gastos</string>
+    <string name="desc_two">Identifica cada uno de tus productos en existencia</string>
+    <string name="desc_three">Analiza el rendimiento de tu negocio</string>
+
+    <!-- Login -->
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="button">Iniciar Sesión</string>
+    <string name="registrate">Regístrate</string>
+    <string name="email">Email</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="todo">TODO</string>
+    <string name="olvidaste_tu_contrase_a">¿Olvidaste tu contraseña?</string>
+    <string name="or">— or —</string>
+    <string name="eres_nuevo">¿Eres nuevo?</string>
+    <string name="inicia_sesion_con_facebook">Inicia Sesión con Facebook</string>
+    <string name="inicia_sesion_con_google">Inicia Sesión con Google</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta?</string>
+    <string name="registrar">Registrar</string>
+    <string name="nombre">Nombre</string>
+    <string name="inicia_sesion">Inicia Sesión</string>
+    <string name="crea_tu_cuenta">Crea tu Cuenta</string>
+
+
+    //Facebook
+    <string name="facebook_app_id">784151063484270</string>
+    <string name="fb_login_protocol_scheme">fb784151063484270</string>
+    <string name="facebook_client_token">0cca894cffdd70127a3e6b7c401dfd6c</string>
+
+    //Google
+    <string name="default_web_client_id">147807990070-6m0pqfa0um6kd2mqr86pm1jl0vj7ojti.apps.googleusercontent.com</string>
+
+
+
+</resources>

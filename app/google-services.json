@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147807990070",
+    "project_id": "emprendenic-85045",
+    "storage_bucket": "emprendenic-85045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147807990070:android:773b8df1648676468d0397",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFzD-_fo9KNaFf2y5RCLM0mTI57_JY1jI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
