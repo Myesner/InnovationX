@@ -1,16 +1,15 @@
 package com.example.myapplication;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -23,16 +22,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -46,10 +41,10 @@ public class Login extends AppCompatActivity {
     private CallbackManager mCallbackManager;
 
     //google
-    private static final String TAG1 = "GoogleActivity";
+
     private static final int RC_SIGN_IN = 9001;
     private GoogleSignInClient mGoogleSignInClient;
-    DatabaseReference databaseReference;
+
 
     EditText et_Correo, et_contra;
 
@@ -75,75 +70,53 @@ public class Login extends AppCompatActivity {
         mCallbackManager = CallbackManager.Factory.create();
 
 
-        btn_registrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Registro.class));
-                finish();
-            }
+        btn_registrar.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), Registro.class));
+            finish();
         });
 
-        btn_recuperar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), resetPass.class));
-                finish();
-            }
+        btn_recuperar.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), resetPass.class));
+            finish();
         });
 
 
         //----------------Correo----------------
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                email = et_Correo.getText().toString().trim();
-                pass = et_contra.getText().toString().trim();
+        btn_login.setOnClickListener(view -> {
+            email = et_Correo.getText().toString().trim();
+            pass = et_contra.getText().toString().trim();
 
-                if (email.isEmpty() || pass.isEmpty()) {
-                    Toast.makeText(Login.this, "ingrese bien los datos", Toast.LENGTH_SHORT).show();
+            if (email.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(Login.this, "ingrese bien los datos", Toast.LENGTH_SHORT).show();
+            } else {
+                if (emailValido(email)) {
+                    mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            //iniciamos sesion
+                            Toast.makeText(Login.this, "Inicio correcto", Toast.LENGTH_SHORT).show();
+                            goMainScreen();
+                        } else {
+                            //las credenciales son incorrectas
+                            Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
-                    if (emailValido(email)) {
-                        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    //iniciamos sesion
-                                    Toast.makeText(Login.this, "Inicio correcto", Toast.LENGTH_SHORT).show();
-                                    goMainScreen();
-                                } else {
-                                    //las credenciales son incorrectas
-                                    Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    } else {
-                        Toast.makeText(Login.this, "Correo no valido", Toast.LENGTH_SHORT).show();
-                    }
-
+                    Toast.makeText(Login.this, "Correo no valido", Toast.LENGTH_SHORT).show();
                 }
 
             }
+
         });
 
         //----------------Facebook----------------
 
-        btn_Facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signInWithFacebook();
-            }
-        });
+        btn_Facebook.setOnClickListener(v -> signInWithFacebook());
 
 
         //----------------Google----------------
 
-        btn_Google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
+        btn_Google.setOnClickListener(v -> signIn());
 
         // [START config_signin]
         // Configure Google Sign In
@@ -197,19 +170,16 @@ public class Login extends AppCompatActivity {
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            updateUI(null);
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        updateUI(null);
                     }
                 });
     }
@@ -242,7 +212,7 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onError(FacebookException error) {
+            public void onError(@NonNull FacebookException error) {
                 // Error en el inicio de sesión con Facebook
                 Toast.makeText(Login.this, "Error en el inicio de sesión con Facebook", Toast.LENGTH_SHORT).show();
             }
@@ -253,18 +223,15 @@ public class Login extends AppCompatActivity {
     private void handleFacebookAccessToken(AccessToken token) {
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Inicio de sesión con Firebase exitoso
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // Error en el inicio de sesión con Firebase
-                            Toast.makeText(Login.this, "Error en el inicio de sesión con Firebase", Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Inicio de sesión con Firebase exitoso
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        // Error en el inicio de sesión con Firebase
+                        Toast.makeText(Login.this, "Error en el inicio de sesión con Firebase", Toast.LENGTH_SHORT).show();
+                        updateUI(null);
                     }
                 });
     }
@@ -277,13 +244,10 @@ public class Login extends AppCompatActivity {
             goMainScreen();
         } else {
             // El inicio de sesión falló o se canceló
+            Toast.makeText(Login.this, "Inicio de sesión fallo", Toast.LENGTH_SHORT).show();
             // Puedes mostrar un mensaje o realizar otras acciones en caso de error
         }
     }
-
-
-
-
 
     private void goMainScreen() {
         Intent intent = new Intent(getApplicationContext(), inicio.class);
@@ -292,12 +256,10 @@ public class Login extends AppCompatActivity {
         finish();
     }
 
-
-
     //verificamos que el correo sea una expresion parecida a la de un corre
     //example@gmail.com
     public  boolean emailValido(String email){
-        String expresion = "[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        String expresion = "[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expresion, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return  matcher.matches();
