@@ -1,18 +1,19 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +24,6 @@ public class Registro extends AppCompatActivity {
 
     private String email;
     private String pass;
-    private String nombre;
 
     FirebaseAuth mAuth;
 
@@ -54,7 +54,7 @@ public class Registro extends AppCompatActivity {
 
 
     public void registrarUsuario(){
-        nombre = et_nombre.getText().toString().trim();
+        String nombre = et_nombre.getText().toString().trim();
         email = et_email.getText().toString().trim();
         pass = et_pass.getText().toString().trim();
         String confipass = et_confpass.getText().toString().trim();
@@ -68,21 +68,21 @@ public class Registro extends AppCompatActivity {
         } else if (pass.length() <= 6) {
             et_pass.setError("La contraseña debe ser mayor a 6 caracteres.");
         } else {
-            mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        String userId = mAuth.getCurrentUser().getUid();
-                        // Crear un objeto para almacenar en la base de datos
-                        Usuario usuario = new Usuario(nombre, email, pass);
-                        // Guardar el objeto en la base de datos bajo el UID del usuario
-                        databaseReference.child("Usuarios").child(userId).setValue(usuario);
+            mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String userId = mAuth.getCurrentUser().getUid();
+                    // Crea un HashMap para almacenar los datos
+                    Map<String, Object> usuario = new HashMap<>();
+                    usuario.put("nombre", nombre);
+                    usuario.put("correoElectronico", email);
+                    usuario.put("contrasena", pass);
+                    // Guardar el objeto en la base de datos bajo el UID del usuario
+                    databaseReference.child("Usuarios").child(userId).setValue(usuario);
 
-                        mostrarMensaje("Cuenta creada correctamente.");
-                        irInicio();
-                    } else {
-                        mostrarMensaje("La cuenta ya existe o ha ocurrido un error.");
-                    }
+                    mostrarMensaje("Cuenta creada correctamente.");
+                    irInicio();
+                } else {
+                    mostrarMensaje("La cuenta ya existe o ha ocurrido un error.");
                 }
             });
         }
@@ -99,7 +99,7 @@ public class Registro extends AppCompatActivity {
     }
 
     public  boolean emailValido(String email){
-        String expresion = "[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        String expresion = "[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expresion, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return  matcher.matches();

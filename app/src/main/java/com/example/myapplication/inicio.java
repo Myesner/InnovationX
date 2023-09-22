@@ -1,17 +1,14 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.login.LoginManager;
 import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class inicio extends AppCompatActivity {
 
@@ -27,12 +24,9 @@ public class inicio extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         btn_cerrars = findViewById(R.id.btn_cerrarS);
-        btn_cerrars.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cerrarSesionFacebook();
-                cerrarSesionGoogle();
-            }
+        btn_cerrars.setOnClickListener(view -> {
+            cerrarSesionFacebook();
+            cerrarSesionGoogle();
         });
 
     }

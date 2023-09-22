@@ -26,7 +26,7 @@
         android:id="@+id/btn_Login"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:backgroundTint="@color/teal_200"
+        android:backgroundTint="@color/verde_menta"
         android:radius="100dp"
         android:text="@string/button"
         android:textColor="@color/white"
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.661"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
 
     <Button
@@ -47,7 +47,7 @@
         android:layout_height="53dp"
         android:text="@string/registrate"
         android:textAlignment="viewStart"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/verde_menta"
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +64,7 @@
         android:layout_width="226dp"
         android:layout_height="39dp"
         android:text="@string/olvidaste_tu_contrase_a"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/verde_menta"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,7 +84,7 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColorHint="@color/teal_200"
+        android:textColorHint="@color/verde_menta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.603"
@@ -102,7 +102,7 @@
         android:ems="10"
         android:hint="@string/contrase_a"
         android:inputType="textPassword"
-        android:textColorHint="@color/teal_200"
+        android:textColorHint="@color/verde_menta"
         app:layout_constraintBottom_toTopOf="@+id/btn_ContraO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
@@ -193,7 +193,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.897"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="RtlHardcoded,TextSizeCheck,TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btn_Google"
@@ -209,6 +209,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.817"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="RtlHardcoded,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

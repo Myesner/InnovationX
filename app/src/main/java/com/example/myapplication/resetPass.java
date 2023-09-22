@@ -1,18 +1,15 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import com.google.firebase.auth.FirebaseAuth;
 
 public class resetPass extends AppCompatActivity {
@@ -30,12 +27,7 @@ public class resetPass extends AppCompatActivity {
         btn_ResetC = findViewById(R.id.btn_ResetC);
         auth = FirebaseAuth.getInstance();
 
-       btn_ResetC.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               recuperar();
-           }
-       });
+       btn_ResetC.setOnClickListener(v -> recuperar());
 
 
     }
@@ -51,19 +43,16 @@ public class resetPass extends AppCompatActivity {
             return;
         }
 
-        auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    auth.setLanguageCode("es");
-                    startActivity(new Intent(getApplicationContext(), Login.class));
-                    finish();
-                    Toast.makeText(resetPass.this, "te enviamos enlase en tu correo", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(resetPass.this, "Correo no esta registrado", Toast.LENGTH_SHORT).show();
-                }
-
+        auth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                auth.setLanguageCode("es");
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
+                Toast.makeText(resetPass.this, "te enviamos enlase en tu correo", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(resetPass.this, "Correo no esta registrado", Toast.LENGTH_SHORT).show();
             }
+
         });
 
 

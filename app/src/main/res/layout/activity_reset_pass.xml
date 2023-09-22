@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".resetPass">
 
+
     <Button
         android:id="@+id/btn_ResetC"
         android:layout_width="163dp"
@@ -15,24 +16,42 @@
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,TextContrastCheck" />
 
 
-    <EditText
-        android:id="@+id/et_ResetEmail"
-        style="@style/HintStyle"
-        android:layout_width="351dp"
-        android:layout_height="46dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <EditText
+            android:id="@+id/et_ResetEmail"
+            style="@style/HintStyle"
+            android:layout_width="351dp"
+            android:layout_height="46dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/verde_menta"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+        android:id="@+id/textView4"
+        android:layout_width="349dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="240dp"
+        android:text="Ingresa tu email para reestablecer la contraseña"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
