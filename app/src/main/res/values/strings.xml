@@ -37,7 +37,7 @@
 
     //Google
     <string name="default_web_client_id">147807990070-6m0pqfa0um6kd2mqr86pm1jl0vj7ojti.apps.googleusercontent.com</string>
-
+    <string name="confirmar_contrase_a">Confirmar Contraseña</string>
 
 
 </resources>
