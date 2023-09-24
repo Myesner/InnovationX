@@ -30,6 +30,7 @@ public class Menu extends AppCompatActivity {
 
         loadFragment(inicio);
 
+
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

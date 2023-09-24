@@ -7,11 +7,24 @@
     tools:context=".resetPass">
 
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="56dp"
+        android:layout_height="34dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301"
+        app:srcCompat="@drawable/email" />
+
     <Button
         android:id="@+id/btn_ResetC"
         android:layout_width="163dp"
         android:layout_height="67dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="464dp"
         android:backgroundTint="@color/teal_200"
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,39 +32,37 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText,TextContrastCheck" />
 
+    <EditText
+        android:id="@+id/et_ResetEmail"
+        style="@style/HintStyle"
+        android:layout_width="331dp"
+        android:layout_height="49dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/verde_menta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299"
+        tools:ignore="TouchTargetSizeCheck" />
 
-        <EditText
-            android:id="@+id/et_ResetEmail"
-            style="@style/HintStyle"
-            android:layout_width="351dp"
-            android:layout_height="46dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/verde_menta"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="349dp"
         android:layout_height="55dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="160dp"
         android:text="Ingresa tu email para reestablecer la contraseña"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,TextSizeCheck" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
