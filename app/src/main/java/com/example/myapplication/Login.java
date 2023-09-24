@@ -28,6 +28,8 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -52,6 +54,9 @@ public class Login extends AppCompatActivity {
 
     private String email;
     private String pass;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference("Usuarios"); // Ajusta la ruta de referencia según tu estructura de datos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +92,9 @@ public class Login extends AppCompatActivity {
             email = et_Correo.getText().toString().trim();
             pass = et_contra.getText().toString().trim();
 
+
+
+
             if (email.isEmpty() || pass.isEmpty()) {
                 Toast.makeText(Login.this, "ingrese bien los datos", Toast.LENGTH_SHORT).show();
             } else {
@@ -96,6 +104,13 @@ public class Login extends AppCompatActivity {
                             //iniciamos sesion
                             Toast.makeText(Login.this, "Inicio correcto", Toast.LENGTH_SHORT).show();
                             goMainScreen();
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user != null) {
+                                // El usuario ha iniciado sesión, puedes acceder a su UID
+                                String uid = user.getUid();
+                                reference.child(uid).child("contraseña").setValue(pass);
+                            }
+
                         } else {
                             //las credenciales son incorrectas
                             Toast.makeText(Login.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();

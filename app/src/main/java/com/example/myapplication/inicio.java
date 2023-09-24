@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,7 @@ public class inicio extends AppCompatActivity {
         btn_cerrars.setOnClickListener(view -> {
             cerrarSesionFacebook();
             cerrarSesionGoogle();
+            Toast.makeText(getApplicationContext(), "Sesion Cerrada", Toast.LENGTH_SHORT).show();
         });
 
     }
