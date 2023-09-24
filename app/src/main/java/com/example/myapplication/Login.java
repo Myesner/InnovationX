@@ -265,7 +265,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void goMainScreen() {
-        Intent intent = new Intent(getApplicationContext(), inicio.class);
+        Intent intent = new Intent(getApplicationContext(), Menu.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();

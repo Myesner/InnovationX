@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/primerFragmento"
+        android:icon="@drawable/vector3"
+        android:title="Inicio"/>
+
+    <item
+        android:id="@+id/segundoFragmento"
+        android:icon="@drawable/vector"
+        android:title="Inventario"/>
+    <item
+        android:id="@+id/tercerFragmento"
+        android:icon="@drawable/vector2"
+        android:title="Balance"/>
+    <item
+        android:id="@+id/cuartoFragmento"
+        android:icon="@drawable/group"
+        android:title="Deudas"/>
+</menu>
