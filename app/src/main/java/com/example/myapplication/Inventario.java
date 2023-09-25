@@ -1,11 +1,18 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +25,10 @@ public class Inventario extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private RecyclerView recyclerView;
+    private ProductoAdapter productoAdapter;
+    private List<Producto> listaProductos;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -44,6 +55,8 @@ public class Inventario extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +65,54 @@ public class Inventario extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        if (getArguments() != null) {
+            Producto producto = (Producto) getArguments().getSerializable("producto");
+
+        }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_inventario, container, false);
+        View rootView = inflater.inflate(R.layout.activity_inventario, container, false);
+
+        Button btnAgregar = rootView.findViewById(R.id.btnAgregar);
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startActivity(new Intent(getActivity(),Nuevo_P.class));
+            }
+        });
+
+        recyclerView = rootView.findViewById(R.id.recyclerViewProductos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        listaProductos = obtenerListaDeProductos(); // Aquí debes obtener la lista de productos
+        productoAdapter = new ProductoAdapter(listaProductos);
+        recyclerView.setAdapter(productoAdapter);
+
+
+        return rootView;
+
     }
+
+    // Método para obtener la lista de productos (puedes cargarla desde donde corresponda)
+    private List<Producto> obtenerListaDeProductos() {
+        List<Producto> lista = new ArrayList<>();
+        // Agrega tus productos a la lista
+        return lista;
+    }
+
+    // Método estático para crear una nueva instancia del fragmento con argumentos
+    public static Inventario newInstance(Producto producto) {
+        Inventario fragment = new Inventario();
+        Bundle args = new Bundle();
+        args.putSerializable("producto", producto);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 }

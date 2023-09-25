@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Nuevo_P">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="419dp"
+        android:layout_height="155dp"
+        android:background="@color/verde_menta"
+
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="UnknownIdInLayout" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="210dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        android:text="Agregar Producto"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="@+id/toolbar3"
+        app:layout_constraintTop_toTopOf="@+id/toolbar3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbarContainer"
+        android:layout_width="410dp"
+        android:layout_height="770dp"
+        android:background="@drawable/semi_rectangular_toolbar_background"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conten3"
+            android:layout_width="350dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ovalo"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conten2"
+            tools:ignore="MissingConstraints">
+
+
+            <EditText
+                android:id="@+id/etPrecioU"
+                android:layout_width="287dp"
+                android:layout_height="53dp"
+                android:ems="10"
+                android:hint="Valor Compra (obligatorio)"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.746"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/CU3"
+                android:layout_width="146dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="4dp"
+                android:text="Precio Unitario"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.229"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/eti3"
+                android:layout_width="42dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="300dp"
+                android:drawableBottom="@drawable/costo"
+                android:drawableTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnTomarFoto"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="155dp"
+            android:layout_height="176dp"
+            android:layout_marginTop="12dp"
+            android:radius="40dp"
+            app:icon="@drawable/foto"
+            app:iconGravity="textTop"
+            app:iconSize="180dp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.129"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btnMinus"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="49dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="52dp"
+            android:onClick="decrementNumber"
+            app:icon="@drawable/menos"
+            app:iconGravity="top"
+            app:iconSize="45dp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/btnTomarFoto"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="68dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="88dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btnTomarFoto"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck"
+            tools:text="0" />
+
+        <Button
+            android:id="@+id/btnPlus"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="53dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="52dp"
+            android:onClick="incrementNumber"
+            android:text="+"
+            app:icon="@drawable/mas"
+            app:iconGravity="top"
+            app:iconSize="40dp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.796"
+            app:layout_constraintStart_toEndOf="@+id/btnTomarFoto"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="133dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="16dp"
+            android:text="Cantidad disponible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.837"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnImportarE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="140dp"
+            android:backgroundTint="@color/verde_menta"
+            android:text="Importar"
+            android:textColor="@color/black"
+            app:icon="@drawable/importar"
+            app:iconGravity="end"
+            app:iconSize="30dp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.876"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="211dp"
+            android:layout_height="43dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="700dp"
+            android:backgroundTint="@color/verde_menta"
+            android:text="Crear Producto"
+            android:textColor="@color/black"
+            app:iconGravity="end"
+            app:iconSize="30dp"
+            app:iconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conten"
+            android:layout_width="352dp"
+            android:layout_height="78dp"
+            android:background="@drawable/ovalo"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.315">
+
+            <TextView
+                android:id="@+id/CU"
+                android:layout_width="51dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/nombre"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.132"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etNombre"
+                android:layout_width="287dp"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:hint="Producto (obligatorio)"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.753"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.888" />
+
+            <TextView
+                android:id="@+id/eti"
+                android:layout_width="42dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="300dp"
+                android:drawableBottom="@drawable/etiqueta"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.804" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conten2"
+            android:layout_width="355dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ovalo"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conten"
+            tools:ignore="MissingConstraints">
+
+
+            <EditText
+                android:id="@+id/etCostoU"
+                android:layout_width="277dp"
+                android:layout_height="52dp"
+                android:ems="10"
+                android:hint="Valor Compra (obligatorio)"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.64"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/CU2"
+                android:layout_width="146dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="4dp"
+                android:text="Costo Unitario"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/eti2"
+                android:layout_width="42dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="304dp"
+                android:drawableBottom="@drawable/costo"
+                android:drawableTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.673" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conten4"
+            android:layout_width="355dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ovalo"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conten3"
+            tools:ignore="MissingConstraints">
+
+
+            <EditText
+                android:id="@+id/etCategoria"
+                android:layout_width="287dp"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:hint="sin Categoria"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.734"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/eti4"
+                android:layout_width="42dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="304dp"
+                android:drawableBottom="@drawable/abajo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.673" />
+
+            <TextView
+                android:id="@+id/CU4"
+                android:layout_width="146dp"
+                android:layout_height="22dp"
+                android:text="Categoria"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.167"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="3dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conten5"
+            android:layout_width="354dp"
+            android:layout_height="126dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ovalo"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/conten4"
+            app:layout_constraintVertical_bias="0.013"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/CU5"
+                android:layout_width="146dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="4dp"
+                android:text="Descripcion"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.078"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="335dp"
+                android:layout_height="70dp"
+                android:contentDescription="Campo de texto para Descripción"
+                android:hint="Descripción (opcional)"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.238"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.516"
+                tools:ignore="EditableContentDescCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
