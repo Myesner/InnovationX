@@ -18,4 +18,9 @@
         android:id="@+id/cuartoFragmento"
         android:icon="@drawable/group"
         android:title="Deudas"/>
+
+    <item
+        android:id="@+id/quintoFragmento"
+        android:icon="@drawable/ventas1"
+        android:title="Ventas"/>
 </menu>

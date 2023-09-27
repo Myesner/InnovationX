@@ -11,7 +11,7 @@
         android:layout_width="230dp"
         android:layout_height="343dp"
         android:layout_marginTop="272dp"
-        android:text="Debe $1000000 "
+        android:text="Por hacer"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

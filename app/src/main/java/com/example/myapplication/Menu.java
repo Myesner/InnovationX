@@ -3,11 +3,11 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +19,7 @@ public class Menu extends AppCompatActivity {
     Inventario inventario = new Inventario();
     Balance balance = new Balance();
     Deudas deudas =new Deudas();
+    Ventas ventas = new Ventas();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,9 @@ public class Menu extends AppCompatActivity {
             } else if (itemId == R.id.cuartoFragmento) {
                 loadFragment(deudas);
                 return true;
+            }else if (itemId == R.id.quintoFragmento) {
+                loadFragment(ventas);
+                return true;
             }
             return false;
 
@@ -56,9 +60,17 @@ public class Menu extends AppCompatActivity {
 
     };
     private void loadFragment(Fragment fragment){
-        FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container,fragment);
-        transaction.commit();
+        FrameLayout frameContainer = findViewById(R.id.frame_container);
+        if (frameContainer != null) {
+            // La vista frame_container está disponible y se puede utilizar.
+            // Ahora puedes proceder a reemplazar el fragmento.
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, fragment) // Reemplaza R.id.frame_container
+                    .commit();
+        } else {
+            // frame_container es nulo, por lo que no puedes continuar.
+            // Realiza alguna acción de manejo de errores o notifica al usuario.
+        }
 
     }
 

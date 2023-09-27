@@ -8,11 +8,15 @@
 
     <FrameLayout
         android:id="@+id/frame_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="420dp"
+        android:layout_height="831dp"
         android:layout_alignParentTop="true"
-        app:layout_behavior = "@string/appbar_scrolling_view_behavior"
-        />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -26,9 +30,12 @@
         android:layout_alignParentBottom="true"
         android:elevation="8dp"
         app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="@+id/frame_container"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_navigation"
         tools:ignore="RtlHardcoded,VisualLintBottomNav" />
 

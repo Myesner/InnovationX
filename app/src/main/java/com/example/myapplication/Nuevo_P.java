@@ -34,13 +34,12 @@ public class Nuevo_P extends AppCompatActivity {
                 String PrecioU = etPrecioU.getText().toString().trim();
                 String CostoU = etCostoU.getText().toString().trim();
 
-                Producto producto = new Producto(nombre,CostoU,PrecioU);
-                Inventario fragment = Inventario.newInstance(producto);
+                Inventario fragment = new Inventario();
+
 
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_container, fragment) // Reemplaza R.id.contenedor_fragmento con el ID de tu contenedor de fragmento
                         .commit();
-
             }
         });
 
